@@ -1,0 +1,40 @@
+services:
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: runpulse_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: runpulse-user
+      POSTGRES_PASSWORD: ChangeMe123
+      POSTGRES_DB: runpulsedb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U runpulse-user -d runpulsedb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  server:
+    build: .
+    container_name: runpulse_server
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: runpulse-user
+      DB_PASSWORD: ChangeMe123
+      DB_NAME: runpulsedb
+      JWT_SECRET: cambia_questo_in_produzione_con_qualcosa_di_lungo
+      PORT: 8080
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
