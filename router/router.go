@@ -1,9 +1,9 @@
 package router
 
 import (
-	"RunPulse/controllers"
-	"RunPulse/middleware"
-	"RunPulse/ws"
+	"Chrono/controllers"
+	"Chrono/middleware"
+	"Chrono/ws"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"

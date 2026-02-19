@@ -1,4 +1,4 @@
-module RunPulse
+module Chrono
 
 go 1.25.0
 

@@ -1,10 +1,10 @@
 package main
 
 import (
-	"RunPulse/config"
-	"RunPulse/models"
-	"RunPulse/router"
-	"RunPulse/ws"
+	"Chrono/config"
+	"Chrono/models"
+	"Chrono/router"
+	"Chrono/ws"
 	"log"
 )
 

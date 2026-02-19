@@ -1,8 +1,8 @@
 package ws
 
 import (
-	"RunPulse/config"
-	"RunPulse/middleware"
+	"Chrono/config"
+	"Chrono/middleware"
 	"log"
 	"net/http"
 	"time"

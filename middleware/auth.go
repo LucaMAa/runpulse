@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"RunPulse/config"
+	"Chrono/config"
 	"log"
 	"net/http"
 	"strings"

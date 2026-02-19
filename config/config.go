@@ -31,9 +31,9 @@ func Load() {
 	Cfg = Config{
 		DBHost:     getEnv("DB_HOST", "localhost"),
 		DBPort:     getEnv("DB_PORT", "5432"),
-		DBUser:     getEnv("DB_USER", "runpulse-user"),
+		DBUser:     getEnv("DB_USER", "chrono_user"),
 		DBPassword: getEnv("DB_PASSWORD", "ChangeMe123"),
-		DBName:     getEnv("DB_NAME", "runpulsedb"),
+		DBName:     getEnv("DB_NAME", "chronodb"),
 		JWTSecret:  getEnv("JWT_SECRET", "supersecret"),
 		Port:       getEnv("PORT", "8080"),
 	}

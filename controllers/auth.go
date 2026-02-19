@@ -1,9 +1,9 @@
 package controllers
 
 import (
-	"RunPulse/config"
-	"RunPulse/middleware"
-	"RunPulse/models"
+	"Chrono/config"
+	"Chrono/middleware"
+	"Chrono/models"
 	"net/http"
 	"time"
 
