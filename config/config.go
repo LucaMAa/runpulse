@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"log"
 	"os"
 
@@ -47,18 +46,18 @@ func getEnv(key, fallback string) string {
 }
 
 func ConnectDB() *gorm.DB {
-	dsn := fmt.Sprintf(
-		"host=%s port=%s user=%s password=%s dbname=%s sslmode=disable TimeZone=Europe/Rome",
-		Cfg.DBHost, Cfg.DBPort, Cfg.DBUser, Cfg.DBPassword, Cfg.DBName,
-	)
+    dsn := os.Getenv("DATABASE_URL")
+    if dsn == "" {
+        log.Fatal("❌ DATABASE_URL non trovato nelle env")
+    }
 
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
-		Logger: logger.Default.LogMode(logger.Info),
-	})
-	if err != nil {
-		log.Fatalf("❌ Connessione DB fallita: %v", err)
-	}
+    db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
+        Logger: logger.Default.LogMode(logger.Info),
+    })
+    if err != nil {
+        log.Fatalf("❌ Connessione DB fallita: %v", err)
+    }
 
-	log.Println("✅ Connesso a PostgreSQL")
-	return db
+    log.Println("✅ Connesso a PostgreSQL")
+    return db
 }
